@@ -1,9 +1,5 @@
 # Diwali Sales Analysis - Complete Breakdown
 
-> A senior Python engineer's guide to understanding this EDA notebook from first principles.
-
----
-
 ## Table of Contents
 
 1. [High-Level Overview](#1-high-level-overview)
@@ -92,9 +88,7 @@ The analysis answers questions like:
 
 **What breaks if removed:** If seaborn isn't installed, `import seaborn` fails with `ModuleNotFoundError`.
 
-> ⚠️ **Bad Practice Alert:** Installing packages inside a notebook is messy. A senior engineer would use a `requirements.txt` file or set up the environment beforehand.
 
----
 
 ### Block 2: Library Imports
 
@@ -181,10 +175,6 @@ df.drop(['Status', 'unnamed1'], axis=1, inplace=True)
 
 **What breaks if removed:** Nothing breaks, but you carry useless data around, potentially causing confusion.
 
-> ⚠️ **Bad Practice:** `inplace=True` is being deprecated. Better approach:
-> ```python
-> df = df.drop(['Status', 'unnamed1'], axis=1)
-> ```
 
 ---
 
@@ -222,7 +212,6 @@ df['Amount'] = df['Amount'].astype('int')
 
 **What breaks if removed:** Nothing critical, but you'll see unnecessary decimal points everywhere.
 
-> ⚠️ **Gotcha:** This only works AFTER `dropna()`. If nulls still existed, `astype('int')` would crash because NaN can't be converted to integer.
 
 ---
 
@@ -356,7 +345,6 @@ sns.barplot(data=sales_state, x='Marital_Status', y='Amount', hue='Gender')
 
 **Finding:** Married women are the highest spenders.
 
-> ⚠️ **Bad Practice:** Variable named `sales_state` but contains marital status data. Copy-paste error - confusing naming.
 
 ---
 
@@ -729,6 +717,3 @@ Imagine you run a **grocery store** and you want to understand your customers be
 
 > *"Married women age group 26-35 yrs from UP, Maharashtra and Karnataka working in IT, Healthcare and Aviation are more likely to buy products from Food, Clothing and Electronics category"*
 
----
-
-*Document generated as a learning resource for understanding Python data analysis.*
